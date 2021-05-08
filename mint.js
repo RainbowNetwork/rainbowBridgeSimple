@@ -28,7 +28,7 @@ const fs = require("fs");
     },
   }
   
-  const mint = async () => {
+    const mint = async (recipient, amount) => {
     const httpUrl = process.env.SECRET_REST_URL;
   
     // Use key created in tutorial #2
@@ -55,14 +55,15 @@ const fs = require("fs");
     console.log(`Wallet address=${accAddress}`)
     
     //address of token
-    const tokenAddress = "secret1qqljr5ad79r9zwnj9slxyh5a9fmd65u04yl38t"
-    const amount = "1000000"
-    const receipient = "secret1ltkkhhygrrg2tp8ealtqqflq7ayqxt3tfgsu6g"
+    const tokenAddress = "secret19epqza8rsv6x59ls8t257hkmcjwwz0lekxvhzs" //sMATIC
+    // const tokenAddress = "secret1yad3le38e63zuaqudmscq0889usw4jusjxdat6" //sRBT
+    //const amount = "1000000"
+    //const receipient = "secret1ltkkhhygrrg2tp8ealtqqflq7ayqxt3tfgsu6g"
     //mint some tokens
     let handleMsg = {
         mint: 
         {
-            address: receipient, amount: amount
+            address: recipient, amount: amount
         }
     };
     response = await client.execute(tokenAddress, handleMsg);
@@ -70,5 +71,5 @@ const fs = require("fs");
 
   };
 
-  mint();
+  module.exports=mint;
   
